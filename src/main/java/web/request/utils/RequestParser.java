@@ -96,16 +96,8 @@ public class RequestParser {
 			final String error = "Cannot parse request: Error reading request stream. Message: " + e.getMessage();
 			logger.error(error);
 			throw new RuntimeException(error);
-		} finally {
-			try {
-				reader.close();
-			} catch (IOException e) {
-				logger.error("Error closing request stream reader " + e.getMessage());
-			}
-		}
+		} 
 		
-		logger.info("Request parsed");
-		logger.info(httpRequest.toString());
 		return httpRequest;
 	}
 	

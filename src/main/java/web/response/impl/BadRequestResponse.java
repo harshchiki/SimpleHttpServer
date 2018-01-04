@@ -58,4 +58,13 @@ public class BadRequestResponse implements HTTPResponse{
 		return this.body;
 	}
 
+	@Override
+	public String getResponseString() {
+		final StringBuilder responseBuilder = new StringBuilder();
+		
+		responseBuilder.append(this.protocol + " " + this.httpStatusCode + "\r\n\r\n" + this.BAD_REQUEST_RESPONSE_HTML);
+		
+		return responseBuilder.toString();
+	}
+
 }

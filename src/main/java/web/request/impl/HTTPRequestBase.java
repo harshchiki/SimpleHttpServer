@@ -14,6 +14,18 @@ public abstract class HTTPRequestBase {
 			final List<String> body,
 			final HTTPMethod httpMethod,
 			final Logger logger){
+		logger.info(serializeRequestAsString(URL,
+				protocol,
+				headers,
+				body,
+				httpMethod));
+	}
+
+	protected String serializeRequestAsString(final String URL,
+			final String protocol,
+			final Map<String, String> headers,
+			final List<String> body,
+			final HTTPMethod httpMethod){
 		final StringBuilder builder = new StringBuilder();
 		builder.append("\n\n\n***************************************************************************");
 		builder.append("\nHTTP request: "+httpMethod);
@@ -21,11 +33,11 @@ public abstract class HTTPRequestBase {
 		builder.append("\nProtocol: " + protocol);
 		builder.append("\nHeader:");
 		headers.entrySet().stream().forEach(entry -> 
-			builder.append("\n" + entry.getKey() + ": " + entry.getValue())
-		);
+		builder.append("\n" + entry.getKey() + ": " + entry.getValue())
+				);
 		builder.append("\nBody:");
-		body.stream().forEach(line ->  builder.append(line));
+		body.stream().forEach(word ->  builder.append(word));
 		builder.append("\n***************************************************************************");
-		logger.info(builder.toString());
+		return builder.toString();
 	}
 }

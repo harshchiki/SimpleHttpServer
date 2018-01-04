@@ -57,24 +57,19 @@ public class WebServer extends Thread{
 					logger.info("WebServer: Incoming request!!");
 					this.threadPool.execute(new Connection(client, this));
 				} catch(IOException e) {
-					
+					logger.error("Error listening on " + this.port + " because " + e.getMessage());
 				}
 			}
 		} catch (IOException e) {
 			String error = "Server shutting down, cannot listen on port: " + this.port;
 			logger.error(error);
 			throw new RuntimeException(error);
-		} finally{
-			this.dispose();
-			logger.info("Server shut down complete");
-			
-			
-		}
+		} 
 	}
 
 	public void dispose(){
 		try {
-			if(null != this.serverSocket) {
+			if(null != this.serverSocket && !this.serverSocket.isClosed()) {
 				this.serverSocket.close();
 				logger.info("Server shutting down: Successfully closed server socket listening on port: " + this.port);
 			}

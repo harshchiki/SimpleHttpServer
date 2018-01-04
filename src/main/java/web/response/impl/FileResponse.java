@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -24,7 +23,6 @@ public class FileResponse implements HTTPResponse{
 	private final String rootPath, requestURL;
 	private String httpStatusCode;
 	private String contentType = ContentType.HTML;
-	private final String protocol = "HTTP/1.0";
 	private final Map<String, String> headers = new HashMap<>();
 	private byte[] body = null;
 	
@@ -90,14 +88,18 @@ public class FileResponse implements HTTPResponse{
 		headers.entrySet().stream().forEach(entry -> headerStringBuilder.append("\n" + entry.getKey() + ": " + entry.getValue()));
 		headerStringBuilder.append("\n");
 		
+		final StringBuilder bodyBuilder = new StringBuilder();
+		for(byte b : body){
+			bodyBuilder.append((char)b);
+		}
 		
-		return "FileResponse [rootPath=" + rootPath 
+		return "\n\nFileResponse [rootPath=" + rootPath 
 				+ ", requestURL=" + requestURL 
 				+ ", httpStatusCode=" + httpStatusCode 
 				+ ", contentType=" + contentType 
 				+ ", protocol=" + protocol 
 				+ ", headers=" + headerStringBuilder.toString()
-				+ ", body=" + Arrays.toString(body) + "]";
+				+ ", body=" + bodyBuilder.toString() + "]\n\n";
 	}
 
 
@@ -135,5 +137,20 @@ public class FileResponse implements HTTPResponse{
 
 	public void setContentType(final String value) {
 		headers.put("Content-Type", value);
+	}
+
+
+	@Override
+	public String getResponseString() {
+		final StringBuilder responseBuilder = new StringBuilder();
+		
+		final StringBuilder bodyBuilder = new StringBuilder();
+		for(byte b : body){
+			bodyBuilder.append((char)b);
+		}
+		
+		responseBuilder.append(this.protocol + " " + this.httpStatusCode + "\r\n\r\n" + bodyBuilder.toString());
+		
+		return responseBuilder.toString();
 	}
 }

@@ -29,6 +29,11 @@ public class GETRequest extends HTTPRequestBase implements HTTPRequest {
 	}
 
 	@Override
+	public String toString(){
+		return serializeRequestAsString(this.url, this.protocol, this.headers, this.body, HTTPMethod.GET);
+	}
+	
+	@Override
 	public HTTPMethod getHTTPMethod() {
 		return HTTPMethod.GET;
 	}

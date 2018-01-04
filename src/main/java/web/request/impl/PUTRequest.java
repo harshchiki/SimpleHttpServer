@@ -30,6 +30,11 @@ public class PUTRequest extends HTTPRequestBase implements HTTPRequest {
 	}
 	
 	@Override
+	public String toString(){
+		return serializeRequestAsString(this.url, this.protocol, this.headers, this.body, HTTPMethod.PUT);
+	}
+	
+	@Override
 	public HTTPMethod getHTTPMethod() {
 		return HTTPMethod.PUT;
 	}

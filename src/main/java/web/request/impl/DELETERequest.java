@@ -29,6 +29,10 @@ public class DELETERequest extends HTTPRequestBase implements HTTPRequest{
 		logRequestAttributes(this.url, protocol, headers, body, HTTPMethod.DELETE, logger);
 	}
 
+	@Override
+	public String toString(){
+		return serializeRequestAsString(this.url, this.protocol, this.headers, this.body, HTTPMethod.DELETE);
+	}
 	
 	@Override
 	public HTTPMethod getHTTPMethod() {

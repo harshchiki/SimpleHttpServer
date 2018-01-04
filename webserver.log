@@ -1,0 +1,122 @@
+2018-01-04 15:15:42 INFO  WebServerMain [THREAD ID=main] - ##########################################################
+2018-01-04 15:15:42 INFO  WebServerMain [THREAD ID=main] - Application STARTING UP
+2018-01-04 15:15:42 INFO  WebServerMain [THREAD ID=main] - ##########################################################
+2018-01-04 15:15:42 INFO  ConfigurationReader [THREAD ID=main] - port configured: 8086
+2018-01-04 15:15:42 INFO  ConfigurationReader [THREAD ID=main] - root path configured: Content
+2018-01-04 15:15:42 INFO  ConfigurationReader [THREAD ID=main] - no of threads configured: 11
+2018-01-04 15:15:42 INFO  WebServer [THREAD ID=Thread-0] - Server started: Listening on port: 8086 root path: Content no. of threads: 11
+2018-01-04 15:15:42 INFO  WebServer [THREAD ID=Thread-0] - Listening on port: 8086
+2018-01-04 15:15:46 INFO  WebServer [THREAD ID=Thread-0] - WebServer: Incoming request!!
+2018-01-04 15:15:46 INFO  Connection [THREAD ID=Thread-0] - Connection: Connection made and processing request
+2018-01-04 15:15:46 INFO  WebServer [THREAD ID=Thread-0] - WebServer: Incoming request!!
+2018-01-04 15:15:46 INFO  Connection [THREAD ID=Thread-0] - Connection: Connection made and processing request
+2018-01-04 15:15:46 INFO  WebServer [THREAD ID=Thread-0] - WebServer: Incoming request!!
+2018-01-04 15:15:46 INFO  Connection [THREAD ID=Thread-0] - Connection: Connection made and processing request
+2018-01-04 15:15:46 INFO  GETRequest [THREAD ID=pool-1-thread-1] - 
+
+
+***************************************************************************
+HTTP request: GET
+URL: /first.html
+Protocol: HTTP/1.1
+Header:
+Body:Connection: keep-aliveCache-Control: max-age=0User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36Upgrade-Insecure-Requests: 1Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8Accept-Encoding: gzip, deflate, brAccept-Language: en-GB,en-US;q=0.9,en;q=0.8
+***************************************************************************
+2018-01-04 15:15:46 INFO  Connection [THREAD ID=pool-1-thread-1] - Received request
+2018-01-04 15:15:46 INFO  Connection [THREAD ID=pool-1-thread-1] - 
+
+
+***************************************************************************
+HTTP request: GET
+URL: /first.html
+Protocol: HTTP/1.1
+Header:
+Body:Connection: keep-aliveCache-Control: max-age=0User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36Upgrade-Insecure-Requests: 1Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8Accept-Encoding: gzip, deflate, brAccept-Language: en-GB,en-US;q=0.9,en;q=0.8
+***************************************************************************
+2018-01-04 15:15:46 INFO  Connection [THREAD ID=pool-1-thread-1] - Request prepared
+2018-01-04 15:15:46 INFO  FileResponse [THREAD ID=pool-1-thread-1] - Building Response: Query for file at root: Content location: /first.html. Complete URL: Content/first.html
+2018-01-04 15:15:46 INFO  FileResponse [THREAD ID=pool-1-thread-1] - File Response Built
+2018-01-04 15:15:46 INFO  FileResponse [THREAD ID=pool-1-thread-1] - 
+
+FileResponse [rootPath=Content, requestURL=/first.html, httpStatusCode=200 OK, contentType=text/html, protocol=HTTP/1.1, headers=
+Response Header
+Content-Length: 55
+Date: Thu Jan 04 15:15:46 IST 2018
+Content-Type: text/html
+, body=<html>
+	<body>
+		<h3> First Page</h3>
+	</body>
+</html>
+]
+
+
+2018-01-04 15:15:46 INFO  Connection [THREAD ID=pool-1-thread-1] - Response built
+2018-01-04 15:15:46 INFO  Connection [THREAD ID=pool-1-thread-1] - 
+
+Writing the following response to client
+2018-01-04 15:15:46 INFO  Connection [THREAD ID=pool-1-thread-1] - <html>
+	<body>
+		<h3> First Page</h3>
+	</body>
+</html>
+
+
+
+2018-01-04 15:15:46 INFO  Connection [THREAD ID=pool-1-thread-1] - Response sent to client
+2018-01-04 15:15:46 INFO  Connection [THREAD ID=pool-1-thread-1] - Resources closed/disposed
+2018-01-04 15:15:51 INFO  WebServer [THREAD ID=Thread-0] - WebServer: Incoming request!!
+2018-01-04 15:15:51 INFO  Connection [THREAD ID=Thread-0] - Connection: Connection made and processing request
+2018-01-04 15:15:51 INFO  GETRequest [THREAD ID=pool-1-thread-2] - 
+
+
+***************************************************************************
+HTTP request: GET
+URL: /second.html
+Protocol: HTTP/1.1
+Header:
+Body:Connection: keep-aliveUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36Upgrade-Insecure-Requests: 1Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8Accept-Encoding: gzip, deflate, brAccept-Language: en-GB,en-US;q=0.9,en;q=0.8
+***************************************************************************
+2018-01-04 15:15:51 INFO  Connection [THREAD ID=pool-1-thread-2] - Received request
+2018-01-04 15:15:51 INFO  Connection [THREAD ID=pool-1-thread-2] - 
+
+
+***************************************************************************
+HTTP request: GET
+URL: /second.html
+Protocol: HTTP/1.1
+Header:
+Body:Connection: keep-aliveUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36Upgrade-Insecure-Requests: 1Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8Accept-Encoding: gzip, deflate, brAccept-Language: en-GB,en-US;q=0.9,en;q=0.8
+***************************************************************************
+2018-01-04 15:15:51 INFO  Connection [THREAD ID=pool-1-thread-2] - Request prepared
+2018-01-04 15:15:51 INFO  FileResponse [THREAD ID=pool-1-thread-2] - Building Response: Query for file at root: Content location: /second.html. Complete URL: Content/second.html
+2018-01-04 15:15:51 INFO  FileResponse [THREAD ID=pool-1-thread-2] - File Response Built
+2018-01-04 15:15:51 INFO  FileResponse [THREAD ID=pool-1-thread-2] - 
+
+FileResponse [rootPath=Content, requestURL=/second.html, httpStatusCode=200 OK, contentType=text/html, protocol=HTTP/1.1, headers=
+Response Header
+Content-Length: 56
+Date: Thu Jan 04 15:15:51 IST 2018
+Content-Type: text/html
+, body=<html>
+	<body>
+		<h3> Second Page</h3>
+	</body>
+</html>
+]
+
+
+2018-01-04 15:15:51 INFO  Connection [THREAD ID=pool-1-thread-2] - Response built
+2018-01-04 15:15:51 INFO  Connection [THREAD ID=pool-1-thread-2] - 
+
+Writing the following response to client
+2018-01-04 15:15:51 INFO  Connection [THREAD ID=pool-1-thread-2] - <html>
+	<body>
+		<h3> Second Page</h3>
+	</body>
+</html>
+
+
+
+2018-01-04 15:15:51 INFO  Connection [THREAD ID=pool-1-thread-2] - Response sent to client
+2018-01-04 15:15:51 INFO  Connection [THREAD ID=pool-1-thread-2] - Resources closed/disposed

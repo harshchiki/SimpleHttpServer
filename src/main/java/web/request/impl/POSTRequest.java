@@ -29,6 +29,11 @@ public class POSTRequest extends HTTPRequestBase implements HTTPRequest {
 
 		logRequestAttributes(this.url, protocol, headers, body, HTTPMethod.POST, logger);
 	}
+	
+	@Override
+	public String toString(){
+		return serializeRequestAsString(this.url, this.protocol, this.headers, this.body, HTTPMethod.POST);
+	}
 
 	@Override
 	public HTTPMethod getHTTPMethod() {

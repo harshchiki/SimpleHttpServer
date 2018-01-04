@@ -6,9 +6,12 @@ import web.response.constants.ContentType;
 import web.response.constants.HTTPStatusCode;
 
 public interface HTTPResponse {
+	final String protocol = "HTTP/1.1";
+	
 	void buildResponse();
 	String getHTTPStatusCode();
 	String getContentType();
 	Map<String, String> getHeader();
 	byte[] getbody();
+	String getResponseString();
 }

@@ -28,6 +28,11 @@ public class OPTIONSRequest extends HTTPRequestBase implements HTTPRequest{
 		
 		logRequestAttributes(this.url, protocol, headers, body, HTTPMethod.OPTIONS, logger);
 	}
+	
+	@Override
+	public String toString(){
+		return serializeRequestAsString(this.url, this.protocol, this.headers, this.body, HTTPMethod.OPTIONS);
+	}
 
 	
 	@Override
