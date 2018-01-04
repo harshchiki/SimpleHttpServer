@@ -11,6 +11,14 @@ import web.request.HTTPRequest;
 import web.request.utils.RequestParser;
 import web.server.WebServer;
 
+/*
+ * Read more: http://javarevisited.blogspot.com/2015/06/how-to-create-http-server-in-java-serversocket-example.html#ixzz53Bsp5etb
+ * 
+ * 1. Read HTTP request from the client socket 
+ * 2. Prepare an HTTP response 
+ * 3. Send HTTP response to the client 
+ * 4. Close the socket
+ */
 public class Connection implements Runnable {
 	private final static Logger logger = Logger.getLogger(Connection.class);
 	private final Socket socketClient;
@@ -45,12 +53,19 @@ public class Connection implements Runnable {
 			logger.error(error);
 		}
 		
-		// extract request and process
+		// 1. Read HTTP request from the client socket's input stream
 		final HTTPRequest httpRequest = RequestParser.getRequest(in, logger);
 		if(null == httpRequest){
 			logger.error("Request could not be parsed");
 		}
 		
+		// 2. Prepare an HTTP response 
+		
+		
+		// 3. Send HTTP response to the client
+		
+		
+		// 4. Close the socket
 		try {
 			in.close();
 			out.close();

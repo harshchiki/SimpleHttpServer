@@ -46,6 +46,11 @@ public class WebServer extends Thread{
 					// this thread pool internally creates a thread whether or not
 					// Connection is a thread or a Runnable
 					// so Connection should be a Runnable, to avoid 'Thread' creation cost
+					
+					/*
+					 * Accepting connections blocking on with serverSocket.accept()
+					 * blocks until a client connects to the server
+					 */
 					final Socket client = this.serverSocket.accept();
 					logger.info("WebServer: Incoming request!!");
 					this.threadPool.execute(new Connection(client, this));

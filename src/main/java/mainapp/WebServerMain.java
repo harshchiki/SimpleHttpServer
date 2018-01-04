@@ -7,6 +7,11 @@ import configuration.ConfigurationReader;
 import configuration.WebServerConfiguration;
 import web.server.WebServer;
 
+/*
+ * References:
+ * http://javarevisited.blogspot.in/2015/06/how-to-create-http-server-in-java-serversocket-example.html#axzz537YxZ300
+ * 
+ */
 public class WebServerMain {
 	public static void main(String[] args) {
 		// log4j
@@ -14,7 +19,7 @@ public class WebServerMain {
 		final Logger logger = Logger.getLogger(WebServerMain.class);
 
 		logger.info("##########################################################");
-		logger.info("Application STARTING");
+		logger.info("Application STARTING UP");
 		logger.info("##########################################################");
 
 		final WebServerConfiguration webConfig = new ConfigurationReader("webserver.config").getWebServerConfiguration();
