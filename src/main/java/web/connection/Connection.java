@@ -43,6 +43,70 @@ public class Connection implements Runnable {
 
 	@Override
 	public void run(){
+		getStreamReferences();
+		
+		// 1. Read HTTP request from the client socket's input stream
+		final HTTPRequest httpRequest = getRequest(); 
+		
+		// 2. Prepare an HTTP response 
+		HTTPResponse httpResponse = buildResponse(httpRequest);
+		
+		
+		// 3. Send HTTP response to the client
+		respond(httpResponse);
+		
+		// 4. Close the socket and other resources
+		closeIOResources();
+		
+	}
+
+
+
+	private void closeIOResources() {
+		try {
+			in.close();
+			out.close();
+			this.socketClient.close();
+		} catch (IOException e) {
+			logger.error("Error closing socket resources. Message: " + e.getMessage());
+		}
+	}
+
+
+
+	private void respond(final HTTPResponse httpResponse) {
+		final String responseString  = httpResponse.toString();
+		final PrintWriter writer = new PrintWriter(out);
+		writer.write(responseString);
+		writer.flush();
+	}
+
+
+
+	private HTTPResponse buildResponse(final HTTPRequest httpRequest) {
+		HTTPResponse httpResponse;
+		httpResponse = new FileResponse(this.webServer.getRootPath(), httpRequest.getURL());
+		httpResponse.buildResponse();
+		return httpResponse;
+	}
+
+
+
+	private HTTPRequest getRequest() {
+		final HTTPRequest httpRequest = RequestParser.getRequest(in, logger);
+		HTTPResponse httpResponse = null;
+		if(null == httpRequest){
+			logger.error("Request could not be parsed");
+			// 2. Prepare an HTTP response for BAD REQUEST (400)
+			httpResponse = new BadRequestResponse();
+			httpResponse.buildResponse();
+		}
+		return httpRequest;
+	}
+
+
+
+	private void getStreamReferences() {
 		try {
 			this.in = this.socketClient.getInputStream();
 		} catch (IOException e) {
@@ -56,36 +120,5 @@ public class Connection implements Runnable {
 			final String error = "Error while getting input stream from socket: " + e.getMessage();
 			logger.error(error);
 		}
-		
-		// 1. Read HTTP request from the client socket's input stream
-		final HTTPRequest httpRequest = RequestParser.getRequest(in, logger);
-		HTTPResponse httpResponse = null;
-		if(null == httpRequest){
-			logger.error("Request could not be parsed");
-			// 2. Prepare an HTTP response for BAD REQUEST (400)
-			httpResponse = new BadRequestResponse();
-			httpResponse.buildResponse();
-		} 
-		
-		// 2. Prepare an HTTP response 
-		httpResponse = new FileResponse(this.webServer.getRootPath(), httpRequest.getURL());
-		httpResponse.buildResponse();
-		
-		
-		// 3. Send HTTP response to the client
-		final String responseString  = httpResponse.toString();
-		final PrintWriter writer = new PrintWriter(out);
-		writer.write(responseString);
-		writer.flush();
-		
-		// 4. Close the socket and other resources
-		try {
-			in.close();
-			out.close();
-			this.socketClient.close();
-		} catch (IOException e) {
-			logger.error("Error closing socket resources. Message: " + e.getMessage());
-		}
-		
 	}
 }
