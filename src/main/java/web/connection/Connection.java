@@ -36,15 +36,8 @@ public class Connection implements Runnable {
 
 	public Connection(final Socket socket, final WebServer webServer) {
 		this.socketClient = socket;
-		if(this.socketClient.isClosed()){
-			logger.error("CTOR: Socket Client found closed");
-		}
-
-		if(!this.socketClient.isConnected()){
-			logger.error("CTOR: Socket client is not connected");
-		}
 		this.webServer = webServer;
-		logger.info("Connection: Connection made and processing request");
+		logger.info("Connection made and processing request");
 	}
 
 

@@ -33,6 +33,7 @@ public class WebServerMain {
 		Runtime.getRuntime().addShutdownHook(new Thread(){
 			@Override
 			public void run(){
+				logger.info("Disposing webserver");
 				webServer.dispose();
 				logger.info("##########################################################");
 				logger.info("Application SHUTTING DOWN");

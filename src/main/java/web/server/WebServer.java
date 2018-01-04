@@ -10,7 +10,7 @@ import org.apache.log4j.Logger;
 
 import web.connection.Connection;
 
-public class WebServer extends Thread{
+public class WebServer extends Thread {
 	private final static Logger logger = Logger.getLogger(WebServer.class);
 	private final int port;
 	private final String rootPath;
@@ -44,9 +44,7 @@ public class WebServer extends Thread{
 				try {
 					final Socket client = this.serverSocket.accept();
 					logger.info("WebServer: Incoming request!!");
-//					this.threadPool.execute(new Connection(client, this));
-					final Connection conn = new Connection(client, this);
-					conn.run();
+					this.threadPool.execute(new Connection(client, this));
 				} catch(IOException e) {
 					logger.error("Error listening on " + this.port + " because " + e.getMessage());
 				}
@@ -58,11 +56,13 @@ public class WebServer extends Thread{
 	}
 
 	public void dispose(){
+		logger.info("dispose called");
 		try {
 			if(null != this.serverSocket && !this.serverSocket.isClosed()) {
 				this.serverSocket.close();
 				logger.info("Server shutting down: Successfully closed server socket listening on port: " + this.port);
 			}
+			
 		} catch(IOException e) {
 			logger.error("Exception occured while closing the server socket, listening on port: " + this.port);
 			logger.error("Error Message: " + e.getMessage());
