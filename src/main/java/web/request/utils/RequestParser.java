@@ -104,6 +104,8 @@ public class RequestParser {
 			}
 		}
 		
+		logger.info("Request parsed");
+		logger.info(httpRequest.toString());
 		return httpRequest;
 	}
 	

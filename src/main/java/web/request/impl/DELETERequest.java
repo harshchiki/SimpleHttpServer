@@ -9,7 +9,7 @@ import org.apache.log4j.Logger;
 
 import web.request.HTTPRequest;
 import web.request.enums.HTTPMethod;
-
+//TO-DO: implement toString()
 public class DELETERequest extends HTTPRequestBase implements HTTPRequest{
 	private final String url;
 	private final String protocol;

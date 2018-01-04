@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -41,6 +42,7 @@ public class FileResponse implements HTTPResponse{
 		logger.info("Building Response: Query for file at root: "
 				+ rootPath + " location: " + this.requestURL 
 				+ ". Complete URL: " + this.rootPath + this.requestURL);
+		setDate(new Date());
 		final File queriedFile = new File(this.rootPath+this.requestURL);
 		if(!queriedFile.exists()){
 			this.httpStatusCode = HTTPStatusCode.NOT_FOUND;
@@ -56,7 +58,8 @@ public class FileResponse implements HTTPResponse{
 				final FileInputStream reader = new FileInputStream(queriedFile);
 				int length = reader.available();
 				body = new byte[length];
-				
+				reader.read(body);
+				reader.close();
 				setContentLength(length);
 				
 				if (queriedFile.getName().endsWith(".htm") || queriedFile.getName().endsWith(".html")) {
@@ -73,7 +76,30 @@ public class FileResponse implements HTTPResponse{
 				logger.error("IOException occurred while reading file: " + queriedFile.getName());
 			}
 		}
+		
+		logger.info("File Response Built");
+		logger.info(this.toString());
 	}
+
+	@Override
+	public String toString() {
+		final StringBuilder headerStringBuilder = new StringBuilder();
+		
+		
+		headerStringBuilder.append("\nResponse Header");
+		headers.entrySet().stream().forEach(entry -> headerStringBuilder.append("\n" + entry.getKey() + ": " + entry.getValue()));
+		headerStringBuilder.append("\n");
+		
+		
+		return "FileResponse [rootPath=" + rootPath 
+				+ ", requestURL=" + requestURL 
+				+ ", httpStatusCode=" + httpStatusCode 
+				+ ", contentType=" + contentType 
+				+ ", protocol=" + protocol 
+				+ ", headers=" + headerStringBuilder.toString()
+				+ ", body=" + Arrays.toString(body) + "]";
+	}
+
 
 	@Override
 	public String getHTTPStatusCode() {
@@ -99,15 +125,15 @@ public class FileResponse implements HTTPResponse{
 	
 	
 	// PRIVATE METHODS
-	public void setDate(Date date) {
+	public void setDate(final Date date) {
 		headers.put("Date", date.toString());
 	}
 
-	public void setContentLength(long value) {
+	public void setContentLength(final long value) {
 		headers.put("Content-Length", String.valueOf(value));
 	}
 
-	public void setContentType(String value) {
+	public void setContentType(final String value) {
 		headers.put("Content-Type", value);
 	}
 }

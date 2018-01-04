@@ -27,7 +27,5 @@ public abstract class HTTPRequestBase {
 		body.stream().forEach(line ->  builder.append(line));
 		builder.append("\n***************************************************************************");
 		logger.info(builder.toString());
-		
-		
 	}
 }

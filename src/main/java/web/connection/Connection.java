@@ -3,12 +3,16 @@ package web.connection;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.net.Socket;
 
 import org.apache.log4j.Logger;
 
 import web.request.HTTPRequest;
 import web.request.utils.RequestParser;
+import web.response.HTTPResponse;
+import web.response.impl.BadRequestResponse;
+import web.response.impl.FileResponse;
 import web.server.WebServer;
 
 /*
@@ -55,17 +59,26 @@ public class Connection implements Runnable {
 		
 		// 1. Read HTTP request from the client socket's input stream
 		final HTTPRequest httpRequest = RequestParser.getRequest(in, logger);
+		HTTPResponse httpResponse = null;
 		if(null == httpRequest){
 			logger.error("Request could not be parsed");
-		}
+			// 2. Prepare an HTTP response for BAD REQUEST (400)
+			httpResponse = new BadRequestResponse();
+			httpResponse.buildResponse();
+		} 
 		
 		// 2. Prepare an HTTP response 
+		httpResponse = new FileResponse(this.webServer.getRootPath(), httpRequest.getURL());
+		httpResponse.buildResponse();
 		
 		
 		// 3. Send HTTP response to the client
+		final String responseString  = httpResponse.toString();
+		final PrintWriter writer = new PrintWriter(out);
+		writer.write(responseString);
+		writer.flush();
 		
-		
-		// 4. Close the socket
+		// 4. Close the socket and other resources
 		try {
 			in.close();
 			out.close();

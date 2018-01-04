@@ -14,6 +14,8 @@ public class WebServer extends Thread{
 	private final static Logger logger = Logger.getLogger(WebServer.class);
 	private final int port;
 	private final String rootPath;
+	
+
 	private final int noOfThreads;
 	private ServerSocket serverSocket;
 
@@ -80,5 +82,9 @@ public class WebServer extends Thread{
 			logger.error("Exception occured while closing the server socket, listening on port: " + this.port);
 			logger.error("Error Message: " + e.getMessage());
 		}
+	}
+	
+	public String getRootPath() {
+		return rootPath;
 	}
 }
