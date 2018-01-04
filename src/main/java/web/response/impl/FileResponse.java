@@ -31,12 +31,12 @@ public class FileResponse implements HTTPResponse{
 	public FileResponse(final String rootPath, final String requestURL) {
 		this.rootPath = rootPath;
 		this.requestURL = requestURL;
+		this.buildResponse();
 	}
 
 	
 	// Contract implementation
-	@Override
-	public void buildResponse() {
+	private void buildResponse() {
 		logger.info("Building Response: Query for file at root: "
 				+ rootPath + " location: " + this.requestURL 
 				+ ". Complete URL: " + this.rootPath + this.requestURL);

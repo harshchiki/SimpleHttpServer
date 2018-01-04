@@ -29,14 +29,17 @@ public class BadRequestResponse implements HTTPResponse{
 		header.put("Content-Type", value);
 	}
 	
+	public BadRequestResponse(){
+		this.buildResponse();
+	}
 	
-	// Contract implementation
-	@Override
-	public void buildResponse() {
+	private void buildResponse() {
 		setDate(new Date());
 		setContentLength(this.BAD_REQUEST_RESPONSE_HTML.length());
 		setContentType(ContentType.HTML);
 	}
+	
+	// Contract implementation
 
 	@Override
 	public String getHTTPStatusCode() {

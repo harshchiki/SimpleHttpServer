@@ -1,73 +1,88 @@
-2018-01-04 15:15:42 INFO  WebServerMain [THREAD ID=main] - ##########################################################
-2018-01-04 15:15:42 INFO  WebServerMain [THREAD ID=main] - Application STARTING UP
-2018-01-04 15:15:42 INFO  WebServerMain [THREAD ID=main] - ##########################################################
-2018-01-04 15:15:42 INFO  ConfigurationReader [THREAD ID=main] - port configured: 8086
-2018-01-04 15:15:42 INFO  ConfigurationReader [THREAD ID=main] - root path configured: Content
-2018-01-04 15:15:42 INFO  ConfigurationReader [THREAD ID=main] - no of threads configured: 11
-2018-01-04 15:15:42 INFO  WebServer [THREAD ID=Thread-0] - Server started: Listening on port: 8086 root path: Content no. of threads: 11
-2018-01-04 15:15:42 INFO  WebServer [THREAD ID=Thread-0] - Listening on port: 8086
-2018-01-04 15:15:46 INFO  WebServer [THREAD ID=Thread-0] - WebServer: Incoming request!!
-2018-01-04 15:15:46 INFO  Connection [THREAD ID=Thread-0] - Connection: Connection made and processing request
-2018-01-04 15:15:46 INFO  WebServer [THREAD ID=Thread-0] - WebServer: Incoming request!!
-2018-01-04 15:15:46 INFO  Connection [THREAD ID=Thread-0] - Connection: Connection made and processing request
-2018-01-04 15:15:46 INFO  WebServer [THREAD ID=Thread-0] - WebServer: Incoming request!!
-2018-01-04 15:15:46 INFO  Connection [THREAD ID=Thread-0] - Connection: Connection made and processing request
-2018-01-04 15:15:46 INFO  GETRequest [THREAD ID=pool-1-thread-1] - 
+2018-01-04 16:08:08 INFO  WebServerMain [THREAD ID=main] - ##########################################################
+2018-01-04 16:08:08 INFO  WebServerMain [THREAD ID=main] - Application STARTING UP
+2018-01-04 16:08:08 INFO  WebServerMain [THREAD ID=main] - ##########################################################
+2018-01-04 16:08:08 INFO  ConfigurationReader [THREAD ID=main] - port configured: 8086
+2018-01-04 16:08:08 INFO  ConfigurationReader [THREAD ID=main] - root path configured: Content
+2018-01-04 16:08:08 INFO  ConfigurationReader [THREAD ID=main] - no of threads configured: 11
+2018-01-04 16:08:08 INFO  WebServer [THREAD ID=Thread-0] - Server started: Listening on port: 8086 root path: Content no. of threads: 11
+2018-01-04 16:08:08 INFO  WebServer [THREAD ID=Thread-0] - Listening on port: 8086
+2018-01-04 16:08:14 INFO  WebServer [THREAD ID=Thread-0] - WebServer: Incoming request!!
+2018-01-04 16:08:14 INFO  Connection [THREAD ID=Thread-0] - Connection: Connection made and processing request
+2018-01-04 16:08:14 INFO  POSTRequest [THREAD ID=Thread-0] - 
 
 
 ***************************************************************************
-HTTP request: GET
-URL: /first.html
+HTTP request: POST
+URL: /postrequest1
 Protocol: HTTP/1.1
 Header:
-Body:Connection: keep-aliveCache-Control: max-age=0User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36Upgrade-Insecure-Requests: 1Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8Accept-Encoding: gzip, deflate, brAccept-Language: en-GB,en-US;q=0.9,en;q=0.8
+Body:Host: localhost:8086Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2Connection: keep-aliveContent-type: application/x-www-form-urlencodedContent-Length: 0
 ***************************************************************************
-2018-01-04 15:15:46 INFO  Connection [THREAD ID=pool-1-thread-1] - Received request
-2018-01-04 15:15:46 INFO  Connection [THREAD ID=pool-1-thread-1] - 
+2018-01-04 16:08:14 INFO  Connection [THREAD ID=Thread-0] - Received request
+2018-01-04 16:08:14 INFO  Connection [THREAD ID=Thread-0] - 
 
 
 ***************************************************************************
-HTTP request: GET
-URL: /first.html
+HTTP request: POST
+URL: /postrequest1
 Protocol: HTTP/1.1
 Header:
-Body:Connection: keep-aliveCache-Control: max-age=0User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36Upgrade-Insecure-Requests: 1Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8Accept-Encoding: gzip, deflate, brAccept-Language: en-GB,en-US;q=0.9,en;q=0.8
+Body:Host: localhost:8086Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2Connection: keep-aliveContent-type: application/x-www-form-urlencodedContent-Length: 0
 ***************************************************************************
-2018-01-04 15:15:46 INFO  Connection [THREAD ID=pool-1-thread-1] - Request prepared
-2018-01-04 15:15:46 INFO  FileResponse [THREAD ID=pool-1-thread-1] - Building Response: Query for file at root: Content location: /first.html. Complete URL: Content/first.html
-2018-01-04 15:15:46 INFO  FileResponse [THREAD ID=pool-1-thread-1] - File Response Built
-2018-01-04 15:15:46 INFO  FileResponse [THREAD ID=pool-1-thread-1] - 
+2018-01-04 16:08:14 INFO  Connection [THREAD ID=Thread-0] - Request prepared
+2018-01-04 16:08:14 INFO  Connection [THREAD ID=Thread-0] - Response built
+2018-01-04 16:08:14 INFO  Connection [THREAD ID=Thread-0] - 
 
-FileResponse [rootPath=Content, requestURL=/first.html, httpStatusCode=200 OK, contentType=text/html, protocol=HTTP/1.1, headers=
-Response Header
-Content-Length: 55
-Date: Thu Jan 04 15:15:46 IST 2018
-Content-Type: text/html
-, body=<html>
-	<body>
-		<h3> First Page</h3>
-	</body>
-</html>
-]
+Writing response to client
+2018-01-04 16:08:14 INFO  Connection [THREAD ID=Thread-0] - Response sent to client
+2018-01-04 16:08:14 INFO  Connection [THREAD ID=Thread-0] - Resources closed/disposed
+2018-01-04 16:09:18 INFO  WebServer [THREAD ID=Thread-0] - WebServer: Incoming request!!
+2018-01-04 16:09:18 INFO  Connection [THREAD ID=Thread-0] - Connection: Connection made and processing request
+2018-01-04 16:09:18 INFO  POSTRequest [THREAD ID=Thread-0] - 
 
 
-2018-01-04 15:15:46 INFO  Connection [THREAD ID=pool-1-thread-1] - Response built
-2018-01-04 15:15:46 INFO  Connection [THREAD ID=pool-1-thread-1] - 
+***************************************************************************
+HTTP request: POST
+URL: /postrequest1
+Protocol: HTTP/1.1
+Header:
+Body:Host: localhost:8086Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2Connection: keep-aliveContent-type: application/x-www-form-urlencodedContent-Length: 0
+***************************************************************************
+2018-01-04 16:09:18 INFO  Connection [THREAD ID=Thread-0] - Received request
+2018-01-04 16:09:18 INFO  Connection [THREAD ID=Thread-0] - 
 
-Writing the following response to client
-2018-01-04 15:15:46 INFO  Connection [THREAD ID=pool-1-thread-1] - <html>
-	<body>
-		<h3> First Page</h3>
-	</body>
-</html>
 
+***************************************************************************
+HTTP request: POST
+URL: /postrequest1
+Protocol: HTTP/1.1
+Header:
+Body:Host: localhost:8086Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2Connection: keep-aliveContent-type: application/x-www-form-urlencodedContent-Length: 0
+***************************************************************************
+2018-01-04 16:09:18 INFO  Connection [THREAD ID=Thread-0] - Request prepared
+2018-01-04 16:09:18 INFO  Connection [THREAD ID=Thread-0] - Response built
+2018-01-04 16:09:18 INFO  Connection [THREAD ID=Thread-0] - 
 
-
-2018-01-04 15:15:46 INFO  Connection [THREAD ID=pool-1-thread-1] - Response sent to client
-2018-01-04 15:15:46 INFO  Connection [THREAD ID=pool-1-thread-1] - Resources closed/disposed
-2018-01-04 15:15:51 INFO  WebServer [THREAD ID=Thread-0] - WebServer: Incoming request!!
-2018-01-04 15:15:51 INFO  Connection [THREAD ID=Thread-0] - Connection: Connection made and processing request
-2018-01-04 15:15:51 INFO  GETRequest [THREAD ID=pool-1-thread-2] - 
+Writing response to client
+2018-01-04 16:09:18 INFO  Connection [THREAD ID=Thread-0] - Response sent to client
+2018-01-04 16:09:18 INFO  Connection [THREAD ID=Thread-0] - Resources closed/disposed
+2018-01-04 16:16:35 INFO  WebServer [THREAD ID=Thread-1] - Server shutting down: Successfully closed server socket listening on port: 8086
+2018-01-04 16:16:35 ERROR WebServer [THREAD ID=Thread-0] - Error listening on 8086 because Socket closed
+2018-01-04 16:16:35 INFO  WebServerMain [THREAD ID=Thread-1] - ##########################################################
+2018-01-04 16:16:35 INFO  WebServerMain [THREAD ID=Thread-1] - Application SHUTTING DOWN
+2018-01-04 16:16:35 INFO  WebServerMain [THREAD ID=Thread-1] - ##########################################################
+2018-01-04 16:16:35 ERROR WebServer [THREAD ID=Thread-0] - Error listening on 8086 because Socket is closed
+2018-01-04 16:16:38 INFO  WebServerMain [THREAD ID=main] - ##########################################################
+2018-01-04 16:16:38 INFO  WebServerMain [THREAD ID=main] - Application STARTING UP
+2018-01-04 16:16:38 INFO  WebServerMain [THREAD ID=main] - ##########################################################
+2018-01-04 16:16:38 INFO  ConfigurationReader [THREAD ID=main] - port configured: 8086
+2018-01-04 16:16:38 INFO  ConfigurationReader [THREAD ID=main] - root path configured: Content
+2018-01-04 16:16:38 INFO  ConfigurationReader [THREAD ID=main] - no of threads configured: 11
+2018-01-04 16:16:38 INFO  WebServer [THREAD ID=Thread-0] - Server started: Listening on port: 8086 root path: Content no. of threads: 11
+2018-01-04 16:16:38 INFO  WebServer [THREAD ID=Thread-0] - Listening on port: 8086
+2018-01-04 16:16:46 INFO  WebServer [THREAD ID=Thread-0] - WebServer: Incoming request!!
+2018-01-04 16:16:46 INFO  Connection [THREAD ID=Thread-0] - Connection: Connection made and processing request
+2018-01-04 16:16:46 INFO  GETRequest [THREAD ID=Thread-0] - 
 
 
 ***************************************************************************
@@ -75,10 +90,10 @@ HTTP request: GET
 URL: /second.html
 Protocol: HTTP/1.1
 Header:
-Body:Connection: keep-aliveUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36Upgrade-Insecure-Requests: 1Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8Accept-Encoding: gzip, deflate, brAccept-Language: en-GB,en-US;q=0.9,en;q=0.8
+Body:User-Agent: curl/7.54.0Accept: */*
 ***************************************************************************
-2018-01-04 15:15:51 INFO  Connection [THREAD ID=pool-1-thread-2] - Received request
-2018-01-04 15:15:51 INFO  Connection [THREAD ID=pool-1-thread-2] - 
+2018-01-04 16:16:46 INFO  Connection [THREAD ID=Thread-0] - Received request
+2018-01-04 16:16:46 INFO  Connection [THREAD ID=Thread-0] - 
 
 
 ***************************************************************************
@@ -86,17 +101,17 @@ HTTP request: GET
 URL: /second.html
 Protocol: HTTP/1.1
 Header:
-Body:Connection: keep-aliveUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36Upgrade-Insecure-Requests: 1Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8Accept-Encoding: gzip, deflate, brAccept-Language: en-GB,en-US;q=0.9,en;q=0.8
+Body:User-Agent: curl/7.54.0Accept: */*
 ***************************************************************************
-2018-01-04 15:15:51 INFO  Connection [THREAD ID=pool-1-thread-2] - Request prepared
-2018-01-04 15:15:51 INFO  FileResponse [THREAD ID=pool-1-thread-2] - Building Response: Query for file at root: Content location: /second.html. Complete URL: Content/second.html
-2018-01-04 15:15:51 INFO  FileResponse [THREAD ID=pool-1-thread-2] - File Response Built
-2018-01-04 15:15:51 INFO  FileResponse [THREAD ID=pool-1-thread-2] - 
+2018-01-04 16:16:46 INFO  Connection [THREAD ID=Thread-0] - Request prepared
+2018-01-04 16:16:46 INFO  FileResponse [THREAD ID=Thread-0] - Building Response: Query for file at root: Content location: /second.html. Complete URL: Content/second.html
+2018-01-04 16:16:46 INFO  FileResponse [THREAD ID=Thread-0] - File Response Built
+2018-01-04 16:16:46 INFO  FileResponse [THREAD ID=Thread-0] - 
 
 FileResponse [rootPath=Content, requestURL=/second.html, httpStatusCode=200 OK, contentType=text/html, protocol=HTTP/1.1, headers=
 Response Header
 Content-Length: 56
-Date: Thu Jan 04 15:15:51 IST 2018
+Date: Thu Jan 04 16:16:46 IST 2018
 Content-Type: text/html
 , body=<html>
 	<body>
@@ -106,17 +121,92 @@ Content-Type: text/html
 ]
 
 
-2018-01-04 15:15:51 INFO  Connection [THREAD ID=pool-1-thread-2] - Response built
-2018-01-04 15:15:51 INFO  Connection [THREAD ID=pool-1-thread-2] - 
+2018-01-04 16:16:46 INFO  Connection [THREAD ID=Thread-0] - Response built
+2018-01-04 16:16:46 INFO  Connection [THREAD ID=Thread-0] - 
 
-Writing the following response to client
-2018-01-04 15:15:51 INFO  Connection [THREAD ID=pool-1-thread-2] - <html>
+Writing response to client
+2018-01-04 16:16:46 INFO  Connection [THREAD ID=Thread-0] - Response sent to client
+2018-01-04 16:16:46 INFO  Connection [THREAD ID=Thread-0] - Resources closed/disposed
+2018-01-04 16:16:53 INFO  WebServer [THREAD ID=Thread-0] - WebServer: Incoming request!!
+2018-01-04 16:16:53 INFO  Connection [THREAD ID=Thread-0] - Connection: Connection made and processing request
+2018-01-04 16:16:53 INFO  GETRequest [THREAD ID=Thread-0] - 
+
+
+***************************************************************************
+HTTP request: GET
+URL: /first.html
+Protocol: HTTP/1.1
+Header:
+Body:User-Agent: curl/7.54.0Accept: */*
+***************************************************************************
+2018-01-04 16:16:53 INFO  Connection [THREAD ID=Thread-0] - Received request
+2018-01-04 16:16:53 INFO  Connection [THREAD ID=Thread-0] - 
+
+
+***************************************************************************
+HTTP request: GET
+URL: /first.html
+Protocol: HTTP/1.1
+Header:
+Body:User-Agent: curl/7.54.0Accept: */*
+***************************************************************************
+2018-01-04 16:16:53 INFO  Connection [THREAD ID=Thread-0] - Request prepared
+2018-01-04 16:16:53 INFO  FileResponse [THREAD ID=Thread-0] - Building Response: Query for file at root: Content location: /first.html. Complete URL: Content/first.html
+2018-01-04 16:16:53 INFO  FileResponse [THREAD ID=Thread-0] - File Response Built
+2018-01-04 16:16:53 INFO  FileResponse [THREAD ID=Thread-0] - 
+
+FileResponse [rootPath=Content, requestURL=/first.html, httpStatusCode=200 OK, contentType=text/html, protocol=HTTP/1.1, headers=
+Response Header
+Content-Length: 55
+Date: Thu Jan 04 16:16:53 IST 2018
+Content-Type: text/html
+, body=<html>
 	<body>
-		<h3> Second Page</h3>
+		<h3> First Page</h3>
 	</body>
 </html>
+]
 
 
+2018-01-04 16:16:53 INFO  Connection [THREAD ID=Thread-0] - Response built
+2018-01-04 16:16:53 INFO  Connection [THREAD ID=Thread-0] - 
 
-2018-01-04 15:15:51 INFO  Connection [THREAD ID=pool-1-thread-2] - Response sent to client
-2018-01-04 15:15:51 INFO  Connection [THREAD ID=pool-1-thread-2] - Resources closed/disposed
+Writing response to client
+2018-01-04 16:16:53 INFO  Connection [THREAD ID=Thread-0] - Response sent to client
+2018-01-04 16:16:53 INFO  Connection [THREAD ID=Thread-0] - Resources closed/disposed
+2018-01-04 16:16:57 INFO  WebServer [THREAD ID=Thread-0] - WebServer: Incoming request!!
+2018-01-04 16:16:57 INFO  Connection [THREAD ID=Thread-0] - Connection: Connection made and processing request
+2018-01-04 16:16:57 INFO  POSTRequest [THREAD ID=Thread-0] - 
+
+
+***************************************************************************
+HTTP request: POST
+URL: /postrequest1
+Protocol: HTTP/1.1
+Header:
+Body:Host: localhost:8086Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2Connection: keep-aliveContent-type: application/x-www-form-urlencodedContent-Length: 0
+***************************************************************************
+2018-01-04 16:16:57 INFO  Connection [THREAD ID=Thread-0] - Received request
+2018-01-04 16:16:57 INFO  Connection [THREAD ID=Thread-0] - 
+
+
+***************************************************************************
+HTTP request: POST
+URL: /postrequest1
+Protocol: HTTP/1.1
+Header:
+Body:Host: localhost:8086Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2Connection: keep-aliveContent-type: application/x-www-form-urlencodedContent-Length: 0
+***************************************************************************
+2018-01-04 16:16:57 INFO  Connection [THREAD ID=Thread-0] - Request prepared
+2018-01-04 16:16:57 INFO  Connection [THREAD ID=Thread-0] - Response built
+2018-01-04 16:16:57 INFO  Connection [THREAD ID=Thread-0] - 
+
+Writing response to client
+2018-01-04 16:16:57 INFO  Connection [THREAD ID=Thread-0] - Response sent to client
+2018-01-04 16:16:57 INFO  Connection [THREAD ID=Thread-0] - Resources closed/disposed
+2018-01-04 16:17:00 INFO  WebServer [THREAD ID=Thread-1] - Server shutting down: Successfully closed server socket listening on port: 8086
+2018-01-04 16:17:00 ERROR WebServer [THREAD ID=Thread-0] - Error listening on 8086 because Socket closed
+2018-01-04 16:17:00 INFO  WebServerMain [THREAD ID=Thread-1] - ##########################################################
+2018-01-04 16:17:00 INFO  WebServerMain [THREAD ID=Thread-1] - Application SHUTTING DOWN
+2018-01-04 16:17:00 INFO  WebServerMain [THREAD ID=Thread-1] - ##########################################################
+2018-01-04 16:17:00 ERROR WebServer [THREAD ID=Thread-0] - Error listening on 8086 because Socket is closed

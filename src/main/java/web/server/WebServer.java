@@ -27,9 +27,6 @@ public class WebServer extends Thread{
 		this.port = port;
 		this.rootPath = rootPath;
 		this.noOfThreads = noOfThreads;
-
-		// no point creating the thread pool at this stage
-		// the thread pool is created only when the web server is run
 	}
 
 	@Override
@@ -45,17 +42,11 @@ public class WebServer extends Thread{
 			
 			while(!Thread.interrupted()){
 				try {
-					// this thread pool internally creates a thread whether or not
-					// Connection is a thread or a Runnable
-					// so Connection should be a Runnable, to avoid 'Thread' creation cost
-					
-					/*
-					 * Accepting connections blocking on with serverSocket.accept()
-					 * blocks until a client connects to the server
-					 */
 					final Socket client = this.serverSocket.accept();
 					logger.info("WebServer: Incoming request!!");
-					this.threadPool.execute(new Connection(client, this));
+//					this.threadPool.execute(new Connection(client, this));
+					final Connection conn = new Connection(client, this);
+					conn.run();
 				} catch(IOException e) {
 					logger.error("Error listening on " + this.port + " because " + e.getMessage());
 				}
@@ -63,7 +54,6 @@ public class WebServer extends Thread{
 		} catch (IOException e) {
 			String error = "Server shutting down, cannot listen on port: " + this.port;
 			logger.error(error);
-			throw new RuntimeException(error);
 		} 
 	}
 
