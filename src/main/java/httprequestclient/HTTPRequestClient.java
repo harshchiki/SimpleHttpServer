@@ -44,7 +44,7 @@ public class HTTPRequestClient {
 
 
 	private void send(final String method) throws MalformedURLException, IOException, ProtocolException {
-		URL url = new URL("http://localhost:8086/postrequest");
+		URL url = new URL("http://localhost:8086/" + method + "request");
 		HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
 		httpCon.setDoOutput(true);
 		httpCon.setRequestMethod("POST");
