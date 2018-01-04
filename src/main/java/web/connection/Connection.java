@@ -135,8 +135,7 @@ public class Connection implements Runnable {
 
 	private HTTPRequest getRequest() {
 		final HTTPRequest httpRequest = RequestParser.getRequest(in, logger);
-		HTTPResponse httpResponse = null;
-		if(null == httpRequest){
+		if(null == httpRequest){							
 			logger.error("Request could not be parsed");
 			// 2. Prepare an HTTP response for BAD REQUEST (400)
 			respond(new BadRequestResponse());
