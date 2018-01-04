@@ -1,0 +1,22 @@
+2018-01-04 10:06:29 INFO  WebServerMain - ##########################################################
+2018-01-04 10:06:29 INFO  WebServerMain - Application STARTING
+2018-01-04 10:06:29 INFO  WebServerMain - ##########################################################
+2018-01-04 10:06:29 INFO  ConfigurationReader - port configured: 8086
+2018-01-04 10:06:29 INFO  ConfigurationReader - root path configured: Content/
+2018-01-04 10:06:29 INFO  ConfigurationReader - no of threads configured: 11
+2018-01-04 10:06:29 INFO  WebServer - Server started: Listening on port: 8086 root path: Content/ no. of threads: 11
+2018-01-04 10:06:29 INFO  WebServer - Listening on port: 8086
+2018-01-04 10:06:31 INFO  WebServerMain - Shutdown hook!
+2018-01-04 10:06:31 INFO  WebServer - Server shutting down: Successfully closed server socket listening on port: 8086
+2018-01-04 10:07:35 INFO  WebServerMain - ##########################################################
+2018-01-04 10:07:35 INFO  WebServerMain - Application STARTING
+2018-01-04 10:07:35 INFO  WebServerMain - ##########################################################
+2018-01-04 10:07:35 INFO  ConfigurationReader - port configured: 8086
+2018-01-04 10:07:35 INFO  ConfigurationReader - root path configured: Content/
+2018-01-04 10:07:35 INFO  ConfigurationReader - no of threads configured: 11
+2018-01-04 10:07:35 INFO  WebServer - Server started: Listening on port: 8086 root path: Content/ no. of threads: 11
+2018-01-04 10:07:35 INFO  WebServer - Listening on port: 8086
+2018-01-04 10:07:37 INFO  WebServer - Server shutting down: Successfully closed server socket listening on port: 8086
+2018-01-04 10:07:37 INFO  WebServerMain - ##########################################################
+2018-01-04 10:07:37 INFO  WebServerMain - Application SHUTTING DOWN
+2018-01-04 10:07:37 INFO  WebServerMain - ##########################################################
