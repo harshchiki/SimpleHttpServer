@@ -3,7 +3,6 @@ package web.connection;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.net.Socket;
 
 import org.apache.log4j.Logger;
@@ -12,8 +11,11 @@ import web.request.HTTPRequest;
 import web.request.utils.RequestParser;
 import web.response.HTTPResponse;
 import web.response.impl.BadRequestResponse;
+import web.response.impl.DELETEResponse;
 import web.response.impl.FileResponse;
+import web.response.impl.OPTIONSReponse;
 import web.response.impl.POSTResponse;
+import web.response.impl.PUTResponse;
 import web.server.WebServer;
 
 /*
@@ -32,15 +34,11 @@ public class Connection implements Runnable {
 	private InputStream in;
 	private OutputStream out;
 
-
-
 	public Connection(final Socket socket, final WebServer webServer) {
 		this.socketClient = socket;
 		this.webServer = webServer;
 		logger.info("Connection made and processing request");
 	}
-
-
 
 	@Override
 	public void run(){
@@ -62,10 +60,13 @@ public class Connection implements Runnable {
 			httpResponse = buildPOSTResponse(httpRequest);
 			break;
 		case PUT:
+			httpResponse = buildPUTResponse(httpRequest);
 			break;
 		case DELETE:
+			httpResponse = buildDELETEResponse(httpRequest);
 			break;
 		case OPTIONS:
+			httpResponse = buildOPTIONSResponse(httpRequest);
 			break;
 		}
 		logger.info("Response built");
@@ -114,7 +115,6 @@ public class Connection implements Runnable {
 	}
 
 
-
 	private HTTPResponse buildFileResponse(final HTTPRequest httpRequest) {
 		return new FileResponse(this.webServer.getRootPath(), httpRequest.getURL());
 	}
@@ -122,6 +122,18 @@ public class Connection implements Runnable {
 	
 	private HTTPResponse buildPOSTResponse(final HTTPRequest httpRequest) {
 		return new POSTResponse();
+	}
+	
+	private HTTPResponse buildPUTResponse(final HTTPRequest httpRequest) {
+		return new PUTResponse();
+	}
+	
+	private HTTPResponse buildDELETEResponse(final HTTPRequest httpRequest) {
+		return new DELETEResponse();
+	}
+	
+	private HTTPResponse buildOPTIONSResponse(final HTTPRequest httpRequest) {
+		return new OPTIONSReponse();
 	}
 
 
@@ -153,5 +165,6 @@ public class Connection implements Runnable {
 			final String error = "Error while getting input stream from socket: " + e.getMessage();
 			logger.error(error);
 		}
+		
 	}
 }
