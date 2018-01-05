@@ -8,6 +8,7 @@ import web.response.HTTPResponse;
 import web.response.constants.ContentType;
 import web.response.constants.HTTPStatusCode;
 
+
 public class BadRequestResponse implements HTTPResponse{
 	private final String httpStatusCode = HTTPStatusCode.BAD_REQUEST;
 	private final String contentType = ContentType.HTML;

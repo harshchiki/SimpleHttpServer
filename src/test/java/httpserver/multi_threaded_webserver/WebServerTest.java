@@ -1,14 +1,14 @@
 package httpserver.multi_threaded_webserver;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.ServerSocket;
-import java.net.Socket;
 import java.net.URL;
 import java.util.Scanner;
 
@@ -112,12 +112,36 @@ public class WebServerTest extends TestCase
 		
 		assertEquals(expectedResponse, actualResponse);
 	}
-
-	private String makeGETRequest(String urlToRead) throws Exception {
+	
+	public void testNotFoundException() throws Exception {
+		final String expectedFirstURLResponseHTML = "File Content/notfound.html not found.";
+		try {
+			makeGETRequest("http://localhost:3000/notfound.html");
+			fail("FileNotFoundException not encountered");
+		} catch(FileNotFoundException fileNotFound){
+			assert(true);
+		}
+		
+		
+	}
+	
+	// Error case: 404 Not found
+	public void testNotFoundCode_404() throws Exception {
+		final String expectedFirstURLResponseHTML = "http://localhost:3000/notfound.html";
+		int actualCode = getResponseCode(expectedFirstURLResponseHTML);
+		int expectedCode = 404;
+		assertEquals(expectedCode, actualCode);
+	}
+	
+	
+	// private methods
+	private String makeGETRequest(final String urlToRead) throws Exception {
 		final StringBuilder result = new StringBuilder();
 		final URL url = new URL(urlToRead);
 		final HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		conn.setRequestMethod("GET");
+		
+		
 		final BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 		String line;
 		while ((line = rd.readLine()) != null) {
@@ -125,6 +149,13 @@ public class WebServerTest extends TestCase
 		}
 		rd.close();
 		return result.toString();
+	}
+	
+	private int getResponseCode(final String urlToRead) throws Exception {
+		final URL url = new URL(urlToRead);
+		final HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+		conn.setRequestMethod("GET");
+		return conn.getResponseCode();
 	}
 	
 	private String callServer(final URL url, final String method) throws Exception {
