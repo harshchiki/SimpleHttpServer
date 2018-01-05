@@ -77,12 +77,14 @@ public class WebServerTest extends TestCase
 	public void testGETFirstURL() throws Exception {
 		final String actualFirstURLResponseHTML = makeGETRequest("http://localhost:3000/first.html");
 		final String expectedFirstURLResponseHTML = "<html>	<body>		<h3> First Page</h3>	</body></html>";
+		
 		assertEquals(expectedFirstURLResponseHTML, actualFirstURLResponseHTML);
 	}
 
 	public void testGETSecondURL() throws Exception {
 		final String actualSecondURLResponseHTML = makeGETRequest("http://localhost:3000/second.html");
 		final String expectedSecondURLResponseHTML = "<html>	<body>		<h3> Second Page</h3>	</body></html>";
+		
 		assertEquals(expectedSecondURLResponseHTML, actualSecondURLResponseHTML);
 	}
 
@@ -117,8 +119,10 @@ public class WebServerTest extends TestCase
 		final String expectedFirstURLResponseHTML = "File Content/notfound.html not found.";
 		try {
 			makeGETRequest("http://localhost:3000/notfound.html");
+			
 			fail("FileNotFoundException not encountered");
 		} catch(FileNotFoundException fileNotFound){
+			
 			assert(true);
 		}
 		
@@ -130,6 +134,7 @@ public class WebServerTest extends TestCase
 		final String expectedFirstURLResponseHTML = "http://localhost:3000/notfound.html";
 		int actualCode = getResponseCode(expectedFirstURLResponseHTML);
 		int expectedCode = 404;
+		
 		assertEquals(expectedCode, actualCode);
 	}
 	
