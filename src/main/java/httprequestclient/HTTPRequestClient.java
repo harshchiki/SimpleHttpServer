@@ -104,17 +104,4 @@ public class HTTPRequestClient {
 	      return result.toString();
 	   }
 	
-	//	private void send(final URL url, final String method) throws MalformedURLException, IOException, ProtocolException {
-	//		URL url = new URL("http://localhost:8086/" + method + "request");
-	//		HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
-	//		httpCon.setDoOutput(true);
-	//		httpCon.setRequestMethod("POST");
-	//		OutputStreamWriter out = new OutputStreamWriter(
-	//				httpCon.getOutputStream());
-	//		System.out.println(httpCon.getResponseCode());
-	//		System.out.println(httpCon.getResponseMessage());
-	//		out.close();
-	//	}
-
-
 }
