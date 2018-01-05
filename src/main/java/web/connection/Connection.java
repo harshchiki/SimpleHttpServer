@@ -12,7 +12,7 @@ import web.request.utils.RequestParser;
 import web.response.HTTPResponse;
 import web.response.impl.BadRequestResponse;
 import web.response.impl.DELETEResponse;
-import web.response.impl.FileResponse;
+import web.response.impl.GETFileResponse;
 import web.response.impl.OPTIONSReponse;
 import web.response.impl.POSTResponse;
 import web.response.impl.PUTResponse;
@@ -115,7 +115,7 @@ public class Connection implements Runnable {
 
 
 	private HTTPResponse buildFileResponse(final HTTPRequest httpRequest) {
-		return new FileResponse(this.rootPath, httpRequest.getURL());
+		return new GETFileResponse(this.rootPath, httpRequest.getURL());
 	}
 	
 	

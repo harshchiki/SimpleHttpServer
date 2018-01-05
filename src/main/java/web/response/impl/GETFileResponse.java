@@ -19,16 +19,16 @@ import web.response.constants.HTTPStatusCode;
  * If found: write back the file on the outputstream of the socket
  * else:  404 Not Found error to be thrown back
  */
-public class FileResponse implements HTTPResponse{
+public class GETFileResponse implements HTTPResponse{
 	private final String rootPath, requestURL;
 	private String httpStatusCode;
 	private String contentType = ContentType.HTML;
 	private final Map<String, String> headers = new HashMap<>();
 	private byte[] body = null;
 	
-	private final static Logger logger = Logger.getLogger(FileResponse.class);
+	private final static Logger logger = Logger.getLogger(GETFileResponse.class);
 	
-	public FileResponse(final String rootPath, final String requestURL) {
+	public GETFileResponse(final String rootPath, final String requestURL) {
 		this.rootPath = rootPath;
 		this.requestURL = requestURL;
 		this.buildResponse();
