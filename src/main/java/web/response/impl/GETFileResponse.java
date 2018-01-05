@@ -83,7 +83,6 @@ public class GETFileResponse implements HTTPResponse{
 	public String toString() {
 		final StringBuilder headerStringBuilder = new StringBuilder();
 		
-		
 		headerStringBuilder.append("\nResponse Header");
 		headers.entrySet().stream().forEach(entry -> headerStringBuilder.append("\n" + entry.getKey() + ": " + entry.getValue()));
 		headerStringBuilder.append("\n");

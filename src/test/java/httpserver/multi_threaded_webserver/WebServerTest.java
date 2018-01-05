@@ -7,7 +7,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
-import java.net.ProtocolException;
 import java.net.ServerSocket;
 import java.net.URL;
 import java.util.Scanner;
@@ -170,7 +169,7 @@ public class WebServerTest extends TestCase
 		final OutputStreamWriter out = new OutputStreamWriter(
 				httpCon.getOutputStream());
 
-		InputStream inputStream = httpCon.getInputStream();
+		final InputStream inputStream = httpCon.getInputStream();
 
 		final Scanner inScanner = new Scanner(inputStream);
 		final StringBuilder responseBuilder = new StringBuilder();
