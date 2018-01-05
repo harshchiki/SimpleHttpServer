@@ -41,6 +41,7 @@ public class GETFileResponse implements HTTPResponse{
 				+ rootPath + " location: " + this.requestURL 
 				+ ". Complete URL: " + this.rootPath + this.requestURL);
 		setDate(new Date());
+		
 		final File queriedFile = new File(this.rootPath+this.requestURL);
 		if(!queriedFile.exists()){
 			this.httpStatusCode = HTTPStatusCode.NOT_FOUND;
@@ -49,7 +50,6 @@ public class GETFileResponse implements HTTPResponse{
 			setContentType(ContentType.HTML);
 			this.body = FILE_NOT_FOUND_HTML.getBytes();
 		}else{
-			// file exists
 			this.httpStatusCode = HTTPStatusCode.OK;
 			
 			try {
