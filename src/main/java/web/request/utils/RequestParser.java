@@ -114,7 +114,7 @@ public class RequestParser {
 		case "post":
 			return HTTPMethod.POST;
 		default:
-			throw new RuntimeException("Invalid request: Invalid method " + token.trim());
+			throw new RuntimeException("Method not support: " + token.trim());
 		}
 	}
 	private static BufferedReader getReader(final InputStream in) {
