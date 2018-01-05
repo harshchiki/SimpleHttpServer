@@ -44,7 +44,7 @@ public class WebServer extends Thread {
 				try {
 					final Socket client = this.serverSocket.accept();
 					logger.info("WebServer: Incoming request!!");
-					this.threadPool.execute(new Connection(client, this));
+					this.threadPool.execute(new Connection(client, this.rootPath));
 				} catch(IOException e) {
 					logger.error("Error listening on " + this.port + " because " + e.getMessage());
 				}

@@ -16,7 +16,6 @@ import web.response.impl.FileResponse;
 import web.response.impl.OPTIONSReponse;
 import web.response.impl.POSTResponse;
 import web.response.impl.PUTResponse;
-import web.server.WebServer;
 
 /*
  * Read more: http://javarevisited.blogspot.com/2015/06/how-to-create-http-server-in-java-serversocket-example.html#ixzz53Bsp5etb
@@ -29,14 +28,14 @@ import web.server.WebServer;
 public class Connection implements Runnable {
 	private final static Logger logger = Logger.getLogger(Connection.class);
 	private final Socket socketClient;
-	private final WebServer webServer;
+	private final String rootPath;
 
 	private InputStream in;
 	private OutputStream out;
 
-	public Connection(final Socket socket, final WebServer webServer) {
+	public Connection(final Socket socket, final String rootPath) {
 		this.socketClient = socket;
-		this.webServer = webServer;
+		this.rootPath = rootPath;
 		logger.info("Connection made and processing request");
 	}
 
@@ -116,7 +115,7 @@ public class Connection implements Runnable {
 
 
 	private HTTPResponse buildFileResponse(final HTTPRequest httpRequest) {
-		return new FileResponse(this.webServer.getRootPath(), httpRequest.getURL());
+		return new FileResponse(this.rootPath, httpRequest.getURL());
 	}
 	
 	
