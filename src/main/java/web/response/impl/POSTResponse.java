@@ -50,7 +50,7 @@ public class POSTResponse implements HTTPResponse {
 
 	@Override
 	public String getResponseString() {
-		return this.protocol + " " + this.httpStatusCode + "\r\n\r\n" + new Date();
+		return this.protocol + " " + this.httpStatusCode + "\r\n\r\n" + "This is POST response";
 	}
 
 }

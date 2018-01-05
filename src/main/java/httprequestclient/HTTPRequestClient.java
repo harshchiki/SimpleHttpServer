@@ -35,73 +35,132 @@ public class HTTPRequestClient {
 	private void sendPost() throws Exception {
 		final String method = "POST";
 		final URL postURL = new URL("http://localhost:8086/" + method + "request");
-		callServer(postURL, method);
+		final String actualResponse = callServer(postURL, method);
+		final String expectedResponse = "This is POST response";
+
+		// VERIFY
+		if(!actualResponse.equals(expectedResponse)){
+			System.out.println("RESPONSE NOT AS EXPECTED for postURL: " + postURL);
+			System.out.println("Actual: " + actualResponse);
+			System.out.println("Expected: " + expectedResponse);
+		} else { 
+			System.out.println("Output matches for postURL: " + postURL);
+			System.out.println("Output: " + actualResponse);
+		}
+
+
+		System.out.println("#############################################");
+		System.out.println("\n\n");
 	}
 
 	// HTTP PUT request
 	private void sendPut() throws Exception {
 		final String method = "PUT";
 		final URL putURL = new URL("http://localhost:8086/" + method + "request");
-		callServer(putURL, method);
+		final String actualResponse = callServer(putURL, method);
+		final String expectedResponse = "This is PUT response";
+
+		// VERIFY
+		if(!actualResponse.equals(expectedResponse)){
+			System.out.println("RESPONSE NOT AS EXPECTED for putURL: " + putURL);
+			System.out.println("Actual: " + actualResponse);
+			System.out.println("Expected: " + expectedResponse);
+		} else { 
+			System.out.println("Output matches for putURL: " + putURL);
+			System.out.println("Output: " + actualResponse);
+		}
+
+		System.out.println("#############################################");
+		System.out.println("\n\n");
 	}
 
 	// HTTP DELETE request
 	private void sendDELETE() throws Exception {
 		final String method = "DELETE";
 		final URL deleteURL = new URL("http://localhost:8086/" + method + "request");
-		callServer(deleteURL, method);
+		final String actualResponse = callServer(deleteURL, method);
+		final String expectedResponse = "This is DELETE response";
+
+		// VERIFY
+		if(!actualResponse.equals(expectedResponse)){
+			System.out.println("RESPONSE NOT AS EXPECTED for deleteURL: " + deleteURL);
+			System.out.println("Actual: " + actualResponse);
+			System.out.println("Expected: " + expectedResponse);
+		} else { 
+			System.out.println("Output matches for putURL: " + deleteURL);
+			System.out.println("Output: " + actualResponse);
+		}
+		System.out.println("#############################################");
+		System.out.println("\n\n");
 	}
 
 	// HTTP GET request
 	private void sendGET() throws Exception {
 		final String firstURL = "http://localhost:8086/first.html";
-		System.out.println(makeGETRequest("http://localhost:8086/first.html"));
-
+		final String actualFirstURLResponseHTML = makeGETRequest("http://localhost:8086/first.html");
+		final String expectedFirstURLResponseHTML = "<html>	<body>		<h3> First Page</h3>	</body></html>";
+		if(!actualFirstURLResponseHTML.equals(expectedFirstURLResponseHTML)){
+			System.out.println("RESPONSE NOT AS EXPECTED for firstURL: " + firstURL);
+			System.out.println("Actual: " + actualFirstURLResponseHTML);
+			System.out.println("Expected: " + expectedFirstURLResponseHTML);
+		} else { 
+			System.out.println("Output matches for firstURL: " + firstURL);
+			System.out.println("Output: " + actualFirstURLResponseHTML);
+		}
 		System.out.println();
 
 		final String secondURL = "http://localhost:8086/second.html";
-		System.out.println(makeGETRequest(secondURL));
-
+		final String expectedSecondURLResponseHTML = "<html>	<body>		<h3> Second Page</h3>	</body></html>";
+		final String actualSecondURLResponseHTML = makeGETRequest(secondURL);
+		if(!actualSecondURLResponseHTML.equals(expectedSecondURLResponseHTML)){
+			System.out.println("RESPONSE NOT AS EXPECTED for secondURL: " + secondURL);
+			System.out.println("Actual: " + actualSecondURLResponseHTML);
+			System.out.println("Expected: " + expectedSecondURLResponseHTML);
+		} else { 
+			System.out.println("Output matches for secondURL: " + secondURL);
+			System.out.println("Output: " + actualSecondURLResponseHTML);
+		}
+		System.out.println("#############################################");
+		System.out.println("\n\n");
 	}
 
-	private void callServer(final URL url, final String method) throws Exception {
+	private String callServer(final URL url, final String method) throws Exception {
 		System.out.println(method + ": " + url);
-		HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
+		final HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
 		httpCon.setDoOutput(true);
 		httpCon.setRequestMethod(method);
-		OutputStreamWriter out = new OutputStreamWriter(
+		final OutputStreamWriter out = new OutputStreamWriter(
 				httpCon.getOutputStream());
 		System.out.println("Response Code: " + httpCon.getResponseCode());
 		System.out.println("Message: " + httpCon.getResponseMessage());
 
-		System.out.println("\nLogging input stream");
 		InputStream inputStream = httpCon.getInputStream();
-		
-		Scanner inScanner = new Scanner(inputStream);
+
+		final Scanner inScanner = new Scanner(inputStream);
+		final StringBuilder responseBuilder = new StringBuilder();
 		while(inScanner.hasNext()){
-			String content = inScanner.nextLine();
-			System.out.println(content);
+			responseBuilder.append(inScanner.nextLine());
 		}
 
-
 		out.close();
-		System.out.println("#############################################");
+		inScanner.close();
+		return responseBuilder.toString();
 	}
 
 
-	
+
 	private String makeGETRequest(String urlToRead) throws Exception {
-	      StringBuilder result = new StringBuilder();
-	      URL url = new URL(urlToRead);
-	      HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-	      conn.setRequestMethod("GET");
-	      BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-	      String line;
-	      while ((line = rd.readLine()) != null) {
-	         result.append(line);
-	      }
-	      rd.close();
-	      return result.toString();
-	   }
-	
+		final StringBuilder result = new StringBuilder();
+		final URL url = new URL(urlToRead);
+		final HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+		conn.setRequestMethod("GET");
+		final BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		String line;
+		while ((line = rd.readLine()) != null) {
+			result.append(line);
+		}
+		rd.close();
+		return result.toString();
+	}
+
 }
