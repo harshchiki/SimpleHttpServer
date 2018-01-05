@@ -29,4 +29,15 @@ public class WebServerConfiguration {
 		this.port = port;
 		this.rootPath = rootPath;
 	}
+	
+	@Override
+	public String toString() {
+		final StringBuilder strbuilder = new StringBuilder();
+		
+		strbuilder.append("port: " + this.port + "\n");
+		strbuilder.append("number of threads: " + this.noOfThreads + "\n");
+		strbuilder.append("root path: " + this.rootPath + "\n");
+		
+		return strbuilder.toString();
+	}
 }

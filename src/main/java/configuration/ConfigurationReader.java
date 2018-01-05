@@ -37,23 +37,31 @@ public class ConfigurationReader {
 			throw new RuntimeException("Cannot boot webserver: port or root path not configured.");
 		}
 		
+		logger.info("Reading web server configuration");
 		final int port = Integer.valueOf(properties.getProperty(KEY_PORT));
         final String rootPath = properties.getProperty(KEY_ROOT_PATH);
 		
 		final String noOfThreadsConfigured = properties.getProperty(KEY_NO_OF_THREADS);
-		
-		logger.info("port configured: " + port);
-		logger.info("root path configured: " + rootPath);
 
 		if(null == noOfThreadsConfigured){
-			logger.info("no of threads not configured, will default");
-			return new WebServerConfiguration(port, rootPath);
+			logger.info("number of threads not configured, will default");
+			final WebServerConfiguration webConfig = new WebServerConfiguration(port, rootPath);
+			logReadConfiguration(webConfig);
+			return webConfig;
 		}else{
 			final int noOfThreads = Integer.valueOf(noOfThreadsConfigured).intValue();
-			logger.info("no of threads configured: " + noOfThreads);
-			return new WebServerConfiguration(port, noOfThreads, rootPath);
+			final WebServerConfiguration webConfig = new WebServerConfiguration(port, noOfThreads, rootPath);
+			logReadConfiguration(webConfig);
+			return webConfig;
 		}
 		
+	}
+
+	private void logReadConfiguration(final WebServerConfiguration webConfig) {
+		logger.info("****************************************************************");
+		logger.info("Configuration");
+		logger.info(webConfig);
+		logger.info("****************************************************************");
 	}
 	
 	private boolean checkPreConditions(){
