@@ -41,7 +41,7 @@ public class Connection implements Runnable {
 
 	@Override
 	public void run(){
-		getStreamReferences();
+		readStreamReferences();
 
 		// 1. Read HTTP request from the client socket's input stream
 		final HTTPRequest httpRequest = getRequest(); 
@@ -150,7 +150,7 @@ public class Connection implements Runnable {
 
 
 
-	private void getStreamReferences() {
+	private void readStreamReferences() {
 		try {
 			this.in = this.socketClient.getInputStream();
 		} catch (IOException e) {

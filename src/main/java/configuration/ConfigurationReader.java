@@ -60,7 +60,7 @@ public class ConfigurationReader {
 	private void logReadConfiguration(final WebServerConfiguration webConfig) {
 		logger.info("****************************************************************");
 		logger.info("Configuration");
-		logger.info(webConfig);
+		logger.info("\n"+webConfig);
 		logger.info("****************************************************************");
 	}
 	

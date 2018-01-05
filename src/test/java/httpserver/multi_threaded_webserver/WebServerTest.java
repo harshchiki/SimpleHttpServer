@@ -124,8 +124,6 @@ public class WebServerTest extends TestCase
 			
 			assert(true);
 		}
-		
-		
 	}
 	
 	// Error case: 404 Not found
